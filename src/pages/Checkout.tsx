@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import './styles/checkout.css';
 
 function Checkout() {
@@ -14,16 +13,7 @@ function Checkout() {
   }, []);
 
   const handlePayment = () => {
-    axios.post('https://example.com/api/payment', {
-      cart: cart,
-      paymentMethod: paymentMethod
-    })
-      .then(response => {
-        console.log(response.data);
-      })
-      .catch(error => {
-        console.error(error);
-      });
+    console.log(cart, paymentMethod);
   };
 
   return (
@@ -40,5 +30,4 @@ function Checkout() {
     </div>
   );
 }
-
 export default Checkout;

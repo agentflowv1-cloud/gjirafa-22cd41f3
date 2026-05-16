@@ -15,6 +15,16 @@ const MenuManagement = () => {
   const handleRemoveMenu = (id: number) => removeMenu(id);
   const handleEditMenu = (id: number, menu: any) => editMenu(id, menu);
 
+  // Add initial menu items if none exist
+  if (storeMenus.length === 0) {
+    const initialMenuItems = [
+      { id: 1, name: 'Item 1', price: 10.99 },
+      { id: 2, name: 'Item 2', price: 9.99 },
+      { id: 3, name: 'Item 3', price: 12.99 }
+    ];
+    initialMenuItems.forEach((item) => addMenu(item));
+  }
+
   return (
     <div>
       <h1>Menu Management</h1>

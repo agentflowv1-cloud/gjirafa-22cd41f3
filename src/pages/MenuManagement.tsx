@@ -5,17 +5,11 @@ import MenuList from '../components/MenuList';
 
 const MenuManagement = () => {
   const [menus, setMenus] = useState([]);
-  const { addMenu, removeMenu, editMenu } = useStore();
+  const { menus: storeMenus, addMenu, removeMenu, editMenu } = useStore();
 
   useEffect(() => {
-    // Mock data for menus
-    const menusData = [
-      { id: 1, name: 'Menu 1', price: 10.99 },
-      { id: 2, name: 'Menu 2', price: 9.99 },
-      { id: 3, name: 'Menu 3', price: 12.99 }
-    ];
-    setMenus(menusData);
-  }, []);
+    setMenus(storeMenus);
+  }, [storeMenus]);
 
   const handleAddMenu = (menu: any) => addMenu(menu);
   const handleRemoveMenu = (id: number) => removeMenu(id);
@@ -29,4 +23,5 @@ const MenuManagement = () => {
     </div>
   );
 };
+
 export default MenuManagement;

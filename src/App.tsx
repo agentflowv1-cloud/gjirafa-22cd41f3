@@ -1,22 +1,20 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import Cart from './pages/Cart';
-import Checkout from './pages/Checkout';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import './styles/app.css';
+import MenuManagement from './pages/MenuManagement';
+import Promotions from './pages/Promotions';
+import Header from './components/Header';
+import styles from './App.module.css';
 
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/checkout" element={<Checkout />} />
-      </Routes>
-      <Footer />
+      <div className={styles.container}>
+        <Header />
+        <Routes>
+          <Route path="/" element={<MenuManagement />} />
+          <Route path="/promotions" element={<Promotions />} />
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }

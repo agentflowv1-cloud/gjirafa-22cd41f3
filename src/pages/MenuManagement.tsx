@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useStore } from '../store';
 import MenuForm from '../components/MenuForm';
 import MenuList from '../components/MenuList';
@@ -9,9 +8,13 @@ const MenuManagement = () => {
   const { addMenu, removeMenu, editMenu } = useStore();
 
   useEffect(() => {
-    axios.get('/api/menus')
-      .then(response => setMenus(response.data))
-      .catch(error => console.error(error));
+    // Mock data for menus
+    const menusData = [
+      { id: 1, name: 'Menu 1', price: 10.99 },
+      { id: 2, name: 'Menu 2', price: 9.99 },
+      { id: 3, name: 'Menu 3', price: 12.99 }
+    ];
+    setMenus(menusData);
   }, []);
 
   const handleAddMenu = (menu: any) => addMenu(menu);
@@ -26,5 +29,4 @@ const MenuManagement = () => {
     </div>
   );
 };
-
 export default MenuManagement;

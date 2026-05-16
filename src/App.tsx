@@ -1,39 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import Menu from './components/Menu';
-import Promotions from './components/Promotions';
-import axios from 'axios';
-import { useStore } from './store';
+import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import './styles/app.css';
 
 function App() {
-  const [menu, setMenu] = useState([]);
-  const [promotions, setPromotions] = useState([]);
-  const { data, error } = useStore();
-
-  useEffect(() => {
-    axios.get('/api/menu')
-      .then(response => {
-        setMenu(response.data);
-      })
-      .catch(error => {
-        console.error(error);
-      });
-
-    axios.get('/api/promotions')
-      .then(response => {
-        setPromotions(response.data);
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  }, []);
-
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
-        <Route path="/" element={<Home menu={menu} promotions={promotions} />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

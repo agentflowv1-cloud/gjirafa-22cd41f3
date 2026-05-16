@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import './styles/cart.css';
 
 function Cart() {
@@ -12,7 +11,7 @@ function Cart() {
     }
   }, []);
 
-  const handle RemoveFromCart = (product: any) => {
+  const handleRemoveFromCart = (product: any) => {
     setCart(cart.filter((item: any) => item.id !== product.id));
   };
 
@@ -32,5 +31,4 @@ function Cart() {
     </div>
   );
 }
-
 export default Cart;
